@@ -1,13 +1,9 @@
 package ch.beerpro.presentation.explore.filter;
 
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +46,14 @@ public class FilterActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setSaveFromParentEnabled(false);
 
-        handleSearch("IPA");
+        String category = getIntent().getStringExtra("CATEGORY");
+        String brewery = getIntent().getStringExtra("BREWERY");
+
+        if (Strings.isNullOrEmpty(category)) {
+            handleSearch(brewery);
+        } else {
+            handleSearch(category);
+        }
     }
 
     private void handleSearch(String text) {

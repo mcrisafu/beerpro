@@ -54,21 +54,36 @@ public class MyBeersViewModel extends ViewModel implements CurrentUser {
 
     private static List<MyBeer> filter(Pair<String, List<MyBeer>> input) {
         String searchTerm1 = input.first;
-        List<MyBeer> myBeers = input.second;
+        List<MyBeer> allBeers = input.second;
         if (Strings.isNullOrEmpty(searchTerm1)) {
-            return myBeers;
+            return allBeers;
         }
-        if (myBeers == null) {
+        if (allBeers == null) {
             return Collections.emptyList();
         }
         ArrayList<MyBeer> filtered = new ArrayList<>();
-        for (MyBeer beer : myBeers) {
+        ArrayList<MyBeer> filteredByCategory = new ArrayList<>();
+        ArrayList<MyBeer> filteredByBrewery = new ArrayList<>();
+        for (MyBeer beer : allBeers) {
+            if (beer.getBeer().getCategory().toLowerCase().equals(searchTerm1.toLowerCase())) {
+                filteredByCategory.add(beer);
+            }
+            if (beer.getBeer().getManufacturer().toLowerCase().equals((searchTerm1.toLowerCase()))) {
+                filteredByBrewery.add(beer);
+            }
             if (beer.getBeer().getName().toLowerCase().contains(searchTerm1.toLowerCase())) {
                 filtered.add(beer);
             }
         }
+        if (filteredByCategory.size() > 0) {
+            return filteredByCategory;
+        }
+        if (filteredByBrewery.size() > 0) {
+            return filteredByBrewery;
+        }
         return filtered;
     }
+
 
     public LiveData<List<MyBeer>> getMyFilteredBeers() {
         return myFilteredBeers;
