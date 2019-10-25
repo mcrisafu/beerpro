@@ -18,9 +18,12 @@ import com.google.android.material.tabs.TabLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.R;
+import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.explore.BeerCategoriesFragment;
 import ch.beerpro.presentation.explore.BeerManufacturersFragment;
 import ch.beerpro.presentation.explore.ExploreFragment;
+import ch.beerpro.presentation.explore.filter.FilterActivity;
+import ch.beerpro.presentation.explore.search.SearchActivity;
 import ch.beerpro.presentation.profile.ProfileFragment;
 import ch.beerpro.presentation.ratings.RatingsFragment;
 import ch.beerpro.presentation.splash.SplashScreenActivity;
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new ExploreFragment());
         adapter.addFragment(new RatingsFragment());
         adapter.addFragment(new ProfileFragment());
+        adapter.addFragment(new BeerCategoriesFragment());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_search_black_24dp);
@@ -132,11 +136,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBeerCategorySelected(String name) {
-        // TODO implement
+        System.out.println(name);
+        Intent intent = new Intent(MainActivity.this, FilterActivity.class);
+        startActivity(intent);
+
     }
 
     @Override
     public void onBeerManufacturerSelected(String name) {
-        // TODO implement
+        System.out.println(name);
     }
 }

@@ -1,4 +1,4 @@
-package ch.beerpro.presentation.explore.search.beers;
+package ch.beerpro.presentation.explore.beers;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,17 +18,17 @@ import butterknife.ButterKnife;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
-import ch.beerpro.presentation.explore.search.beers.SearchResultFragment.OnItemSelectedListener;
+import ch.beerpro.presentation.explore.beers.ExploreResultFragment.OnItemSelectedListener;
 import ch.beerpro.presentation.utils.EntityDiffItemCallback;
 
 
-public class SearchResultRecyclerViewAdapter extends ListAdapter<Beer, SearchResultRecyclerViewAdapter.ViewHolder> {
+public class ExploreResultRecyclerViewAdapter extends ListAdapter<Beer, ExploreResultRecyclerViewAdapter.ViewHolder> {
 
     private static final EntityDiffItemCallback<Beer> DIFF_CALLBACK = new EntityDiffItemCallback<>();
 
     private final OnItemSelectedListener listener;
 
-    public SearchResultRecyclerViewAdapter(OnItemSelectedListener listener) {
+    public ExploreResultRecyclerViewAdapter(OnItemSelectedListener listener) {
         super(DIFF_CALLBACK);
         this.listener = listener;
     }

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import ch.beerpro.presentation.explore.search.beers.SearchResultFragment;
+import ch.beerpro.presentation.explore.beers.ExploreResultFragment;
 import ch.beerpro.presentation.explore.search.suggestions.SearchSuggestionsFragment;
 import ch.beerpro.presentation.profile.mybeers.MyBeersFragment;
 
@@ -23,7 +23,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
         searchSuggestionsFragment = new SearchSuggestionsFragment();
-        searchResultFragment = new SearchResultFragment();
+        searchResultFragment = new ExploreResultFragment();
         myBeersFragment = new MyBeersFragment();
     }
 

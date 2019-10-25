@@ -1,4 +1,4 @@
-package ch.beerpro.presentation.explore.search;
+package ch.beerpro.presentation.explore.filter;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -21,39 +21,27 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.explore.beers.ExploreResultFragment;
+import ch.beerpro.presentation.explore.search.SearchViewModel;
+import ch.beerpro.presentation.explore.search.ViewPagerAdapter;
 import ch.beerpro.presentation.explore.search.suggestions.SearchSuggestionsFragment;
 import ch.beerpro.presentation.profile.mybeers.MyBeersViewModel;
 import ch.beerpro.presentation.profile.mybeers.OnMyBeerItemInteractionListener;
 
-public class SearchActivity extends AppCompatActivity
+public class FilterActivity extends AppCompatActivity
         implements ExploreResultFragment.OnItemSelectedListener, SearchSuggestionsFragment.OnItemSelectedListener,
         OnMyBeerItemInteractionListener {
 
     private SearchViewModel searchViewModel;
     private ViewPagerAdapter adapter;
-    private EditText searchEditText;
     private MyBeersViewModel myBeersViewModel;
     private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-
-        searchEditText = findViewById(R.id.searchEditText);
-        searchEditText.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                String text = searchEditText.getText().toString();
-                handleSearch(text);
-                addSearchTermToUserHistory(text);
-            }
-            return false;
-        });
-
-        findViewById(R.id.clearFilterButton).setOnClickListener(view -> {
-            searchEditText.setText(null);
-            handleSearch(null);
-        });
+        setContentView(R.layout.activity_filter);
+        searchViewModel = ViewModelProviders.of(this).get(SearchViewModel.class);
+        myBeersViewModel = ViewModelProviders.of(this).get(MyBeersViewModel.class);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.tablayout);
@@ -61,8 +49,8 @@ public class SearchActivity extends AppCompatActivity
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setSaveFromParentEnabled(false);
-        searchViewModel = ViewModelProviders.of(this).get(SearchViewModel.class);
-        myBeersViewModel = ViewModelProviders.of(this).get(MyBeersViewModel.class);
+
+        handleSearch("IPA");
     }
 
     private void handleSearch(String text) {
@@ -72,9 +60,7 @@ public class SearchActivity extends AppCompatActivity
         adapter.notifyDataSetChanged();
     }
 
-    private void addSearchTermToUserHistory(String text) {
-        searchViewModel.addToSearchHistory(text);
-    }
+
 
     @Override
     public void onSearchResultListItemSelected(View animationSource, Beer item) {
@@ -82,21 +68,6 @@ public class SearchActivity extends AppCompatActivity
         intent.putExtra(DetailsActivity.ITEM_ID, item.getId());
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, animationSource, "image");
         startActivity(intent, options.toBundle());
-    }
-
-    @Override
-    public void onSearchSuggestionListItemSelected(String text) {
-        searchEditText.setText(text);
-        searchEditText.setSelection(text.length());
-        hideKeyboard();
-        handleSearch(text);
-    }
-
-    private void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            imm.hideSoftInputFromWindow(searchEditText.getWindowToken(), 0);
-        }
     }
 
     @Override
@@ -110,5 +81,10 @@ public class SearchActivity extends AppCompatActivity
     @Override
     public void onWishClickedListener(Beer item) {
         searchViewModel.toggleItemInWishlist(item.getId());
+    }
+
+    @Override
+    public void onSearchSuggestionListItemSelected(String text) {
+
     }
 }
