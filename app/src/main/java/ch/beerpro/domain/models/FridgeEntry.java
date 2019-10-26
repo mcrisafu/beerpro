@@ -27,11 +27,10 @@ public class FridgeEntry implements Entity {
     private Date addedAt;
     private int amount;
 
-    public FridgeEntry(String userId, String beerId, Date addedAt, int amount) {
+    public FridgeEntry(String userId, String beerId, Date addedAt) {
         this.userId = userId;
         this.beerId = beerId;
         this.addedAt = addedAt;
-        this.amount = amount;
     }
 
     public FridgeEntry() {
@@ -61,8 +60,19 @@ public class FridgeEntry implements Entity {
         return this.amount;
     }
 
-    public void setAmount(){
+    public void setAmount(int amount){
+        this.amount = amount;
+    }
 
+    public void increaseAmount(int increaseBy){
+        this.amount = this.amount + increaseBy;
+    }
+
+    public void decreaseAmount(int decreaseBy){
+        if (this.amount == 0){
+            return;
+        }
+        this.amount = this.amount + decreaseBy;
     }
 
     public void setId(String id) {

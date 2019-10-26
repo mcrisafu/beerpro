@@ -44,7 +44,7 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.activity_my_wishlist_listentry, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_my_fridge_listentry, parent, false);
         return new ViewHolder(view);
     }
 
