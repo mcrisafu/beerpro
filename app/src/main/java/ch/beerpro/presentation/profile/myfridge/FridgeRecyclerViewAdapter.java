@@ -1,5 +1,6 @@
 package ch.beerpro.presentation.profile.myfridge;
 
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,12 +81,20 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
         @BindView(R.id.removeFromWishlist)
         Button remove;
 
+        @BindView(R.id.amountInFridge)
+        TextView amountInFridge;
+
+        @BindView(R.id.increaseFridgePlusOne)
+        Button increaseFridgePlusOne;
+
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, itemView);
         }
 
         void bind(FridgeEntry fridgeEntry, Beer item, OnFridgeItemInteractionListener listener) {
+            Log.v(TAG, "Tests");
             name.setText(item.getName());
             manufacturer.setText(item.getManufacturer());
             category.setText(item.getCategory());
@@ -101,6 +110,12 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
                     DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(fridgeEntry.getAddedAt());
             addedAt.setText(formattedDate);
             remove.setOnClickListener(v -> listener.onFridgeEntryClickedListener(item));
+            Log.v(TAG, String.valueOf(fridgeEntry.getAmount()));
+            Log.v(TAG, fridgeEntry.toString());
+            amountInFridge.setText(String.valueOf(fridgeEntry.getAmount()));
+//            amountInFridge.setText(fridgeEntry.getAmount());
+            increaseFridgePlusOne.setOnClickListener(v -> listener.onIncreaseFridgePlusOneClickedListener(item));
+
         }
 
     }

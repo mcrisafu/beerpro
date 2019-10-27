@@ -23,10 +23,13 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
     private final MutableLiveData<String> currentUserId = new MutableLiveData<>();
     private final FridgeRepository fridgeRepository;
     private final BeersRepository beersRepository;
+    private final LiveData<List<FridgeEntry>> myFridge;
+
 
     public FridgeViewModel() {
         fridgeRepository = new FridgeRepository();
         beersRepository = new BeersRepository();
+        myFridge = fridgeRepository.getMyFridge(currentUserId);
 
         currentUserId.setValue(getCurrentUser().getUid());
     }
@@ -38,5 +41,15 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
     public Task<Void> toggleItemInFridge(String itemId) {
         return fridgeRepository.toggleUserFridgeItem(getCurrentUser().getUid(), itemId);
     }
+
+    public Task<Void> increaseItemAmountInFridge(String itemId){
+        return fridgeRepository.changeAmountFridgeItem(getCurrentUser().getUid(), itemId);
+    }
+
+//    public LiveData<FridgeEntry> getMyFridgeEntryforBeer(String itemId){
+//        LiveData<String> beerId = new MutableLiveData<>(itemId);
+//        LiveData<Beer> beer = beersRepository.getBeer(beerId);
+//        return fridgeRepository.getMyFridgeEntryForBeer(currentUserId, beer);
+//    }
 
 }

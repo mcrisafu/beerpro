@@ -1,5 +1,6 @@
 package ch.beerpro.presentation.profile.mybeers;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,9 @@ import butterknife.ButterKnife;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeEntry;
 import ch.beerpro.domain.models.MyBeer;
+import ch.beerpro.domain.models.MyBeerFromFridge;
 import ch.beerpro.domain.models.MyBeerFromRating;
 import ch.beerpro.domain.models.MyBeerFromWishlist;
 import ch.beerpro.presentation.utils.DrawableHelpers;
@@ -97,6 +100,9 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
         @BindView(R.id.removeFromWishlist)
         Button removeFromWishlist;
 
+//        @BindView(R.id.amountInFridge)
+//        TextView amountInFridge;
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, itemView);
@@ -105,6 +111,9 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
         public void bind(MyBeer entry, OnMyBeerItemInteractionListener listener) {
 
             Beer item = entry.getBeer();
+            System.out.println("Test");
+
+            Log.v(TAG, "Test");
 
             name.setText(item.getName());
             manufacturer.setText(item.getManufacturer());
@@ -132,6 +141,12 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
                 removeFromWishlist.setText("Wunschliste");
                 onTheListSince.setText("beurteilt am");
             }
+
+//            if (entry instanceof MyBeerFromFridge){
+//                FridgeEntry fridgeEntry =((MyBeerFromFridge) entry).getFridgeEntry();
+//                System.out.println(fridgeEntry.getAmount());
+//                amountInFridge.setText("hans");
+//            }
         }
     }
 }

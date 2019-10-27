@@ -15,7 +15,7 @@ public class FridgeEntry implements Entity {
     public static final String FIELD_USER_ID = "userId";
     public static final String FIELD_BEER_ID = "beerId";
     public static final String FIELD_ADDED_AT = "addedAt";
-    public static final String AMOUNT = "amount";
+    public static final String FIELD_AMOUNT = "amount";
 
     /**
      * The id is formed by `$userId_$beerId` to make queries easier.
@@ -31,6 +31,7 @@ public class FridgeEntry implements Entity {
         this.userId = userId;
         this.beerId = beerId;
         this.addedAt = addedAt;
+        this.amount = 0;
     }
 
     public FridgeEntry() {
@@ -132,7 +133,7 @@ public class FridgeEntry implements Entity {
 
     @NonNull
     public String toString() {
-        return "FridgeEntry(id=" + this.getId() + ", userId=" + this.getUserId() + ", beerId=" + this.getBeerId() + ", addedAt=" + this.getAddedAt() + ")";
+        return "FridgeEntry(id=" + this.getId() + ", userId=" + this.getUserId() + ", beerId=" + this.getBeerId() + ", addedAt=" + this.getAddedAt() + ", Amount=" + this.amount +")";
     }
 
 }

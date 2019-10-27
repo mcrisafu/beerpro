@@ -1,5 +1,6 @@
 package ch.beerpro.data.repositories;
 
+import android.util.Log;
 import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
@@ -8,24 +9,30 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.Transaction;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Entity;
 import ch.beerpro.domain.models.FridgeEntry;
 import ch.beerpro.domain.utils.FirestoreQueryLiveData;
 import ch.beerpro.domain.utils.FirestoreQueryLiveDataArray;
+import ch.beerpro.presentation.utils.EntityClassSnapshotParser;
 
 import static androidx.lifecycle.Transformations.map;
 import static androidx.lifecycle.Transformations.switchMap;
 import static ch.beerpro.domain.utils.LiveDataExtensions.combineLatest;
 
 public class FridgeRepository {
-    private static LiveData<List<FridgeEntry>> getFridgeEntrtyByUser(String userId) {
+
+    private final static EntityClassSnapshotParser<FridgeEntry> parser = new EntityClassSnapshotParser<>(FridgeEntry.class);
+
+    private static LiveData<List<FridgeEntry>> getFridgeEntryByUser(String userId) {
         return new FirestoreQueryLiveDataArray<>(FirebaseFirestore.getInstance().collection(FridgeEntry.COLLECTION)
                 .orderBy(FridgeEntry.FIELD_ADDED_AT, Query.Direction.DESCENDING).whereEqualTo(FridgeEntry.FIELD_USER_ID, userId),
                 FridgeEntry.class);
@@ -58,6 +65,24 @@ public class FridgeRepository {
         });
     }
 
+    public Task<Void> changeAmountFridgeItem(String userId, String itemId) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String fridgeEntryId = FridgeEntry.generateId(userId, itemId);
+        final DocumentReference fridgeEntryQuery = db.collection(FridgeEntry.COLLECTION).document(fridgeEntryId);
+
+        db.runTransaction((Transaction.Function<Void>) transaction -> {
+            FridgeEntry fridgeEntry = parser.parseSnapshot(transaction.get(fridgeEntryQuery));
+            int amount = fridgeEntry.getAmount();
+            Log.v("hansi", String.valueOf(amount));
+            transaction.update(fridgeEntryQuery, FridgeEntry.FIELD_AMOUNT, amount + 1);
+            return null;
+        });
+        return null;
+    }
+
+
+
     public LiveData<List<Pair<FridgeEntry, Beer>>> getMyFridgeWithBeers(LiveData<String> currentUserId,
                                                                    LiveData<List<Beer>> allBeers) {
         return map(combineLatest(getMyFridge(currentUserId), map(allBeers, Entity::entitiesById)), input -> {
@@ -74,13 +99,11 @@ public class FridgeRepository {
     }
 
     public LiveData<List<FridgeEntry>> getMyFridge(LiveData<String> currentUserId) {
-        return switchMap(currentUserId, FridgeRepository::getFridgeEntrtyByUser);
+        return switchMap(currentUserId, FridgeRepository::getFridgeEntryByUser);
     }
 
 
     public LiveData<FridgeEntry> getMyFridgeEntryForBeer(LiveData<String> currentUserId, LiveData<Beer> beer) {
-
-
         return switchMap(combineLatest(currentUserId, beer), FridgeRepository::getUserFridgeFor);
     }
 

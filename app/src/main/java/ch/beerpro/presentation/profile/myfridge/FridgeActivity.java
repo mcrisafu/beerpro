@@ -3,6 +3,7 @@ package ch.beerpro.presentation.profile.myfridge;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
@@ -96,4 +97,17 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
     public void onFridgeEntryClickedListener(Beer beer) {
         model.toggleItemInFridge(beer.getId());
     }
+
+    @Override
+    public void onIncreaseFridgePlusOneClickedListener(Beer beer){
+//        fridgeEntry.increaseAmount(1);
+//        Log.v("hans", String.valueOf(fridgeEntry.getAmount()));
+//        Log.v("hans", String.valueOf(fridgeEntry.getUserId()));
+        model.increaseItemAmountInFridge(beer.getId());
+    }
+
+//    public void fridgeEntryAmountFetcher(Beer beer){
+//        //Log.v("asdf", model.getMyFridgeEntryforBeer(beer.getId());
+//        model.getMyFridgeEntryforBeer(beer.getId());
+//    }
 }
