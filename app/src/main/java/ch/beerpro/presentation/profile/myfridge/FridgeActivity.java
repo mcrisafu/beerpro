@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -98,12 +99,21 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
         model.toggleItemInFridge(beer.getId());
     }
 
-    @Override
-    public void onIncreaseFridgePlusOneClickedListener(Beer beer){
+//    @Override
+//    public void onIncreaseFridgePlusOneClickedListener(Beer beer){
 //        fridgeEntry.increaseAmount(1);
 //        Log.v("hans", String.valueOf(fridgeEntry.getAmount()));
 //        Log.v("hans", String.valueOf(fridgeEntry.getUserId()));
-        model.increaseItemAmountInFridge(beer.getId());
+//        model.increaseItemAmountInFridge(beer.getId());
+//    }
+
+
+    @Override
+    public FridgeEntry onIncreaseFridgePlusOneClickedListener(Beer beer){
+//        fridgeEntry.increaseAmount(1);
+//        Log.v("hans", String.valueOf(fridgeEntry.getAmount()));
+//        Log.v("hans", String.valueOf(fridgeEntry.getUserId()));
+        return model.increaseItemAmountInFridge(beer.getId()).getResult();
     }
 
 //    public void fridgeEntryAmountFetcher(Beer beer){

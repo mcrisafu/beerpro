@@ -112,9 +112,9 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
             remove.setOnClickListener(v -> listener.onFridgeEntryClickedListener(item));
             Log.v(TAG, String.valueOf(fridgeEntry.getAmount()));
             Log.v(TAG, fridgeEntry.toString());
-            amountInFridge.setText(String.valueOf(fridgeEntry.getAmount()));
+//            amountInFridge.setText(String.valueOf(fridgeEntry.getAmount()));
 //            amountInFridge.setText(fridgeEntry.getAmount());
-            increaseFridgePlusOne.setOnClickListener(v -> listener.onIncreaseFridgePlusOneClickedListener(item));
+            increaseFridgePlusOne.setOnClickListener(v -> {FridgeEntry result = listener.onIncreaseFridgePlusOneClickedListener(item); amountInFridge.setText(String.valueOf(result.getAmount()));});
 
         }
 

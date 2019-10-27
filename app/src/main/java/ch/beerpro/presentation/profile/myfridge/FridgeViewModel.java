@@ -42,7 +42,11 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
         return fridgeRepository.toggleUserFridgeItem(getCurrentUser().getUid(), itemId);
     }
 
-    public Task<Void> increaseItemAmountInFridge(String itemId){
+//    public Task<Void> increaseItemAmountInFridge(String itemId){
+//        return fridgeRepository.changeAmountFridgeItem(getCurrentUser().getUid(), itemId);
+//    }
+
+    public Task<FridgeEntry> increaseItemAmountInFridge(String itemId){
         return fridgeRepository.changeAmountFridgeItem(getCurrentUser().getUid(), itemId);
     }
 
@@ -51,5 +55,9 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
 //        LiveData<Beer> beer = beersRepository.getBeer(beerId);
 //        return fridgeRepository.getMyFridgeEntryForBeer(currentUserId, beer);
 //    }
+
+    public LiveData<FridgeEntry> getMyFridgeforBeer(LiveData<String> beerId){
+        return fridgeRepository.getMyFridgeEntryForBeer(currentUserId, beersRepository.getBeer(beerId));
+    }
 
 }

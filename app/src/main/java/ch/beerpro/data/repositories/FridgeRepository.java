@@ -65,20 +65,37 @@ public class FridgeRepository {
         });
     }
 
-    public Task<Void> changeAmountFridgeItem(String userId, String itemId) {
+//    public Task<Void> changeAmountFridgeItem(String userId, String itemId) {
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        String fridgeEntryId = FridgeEntry.generateId(userId, itemId);
+//        final DocumentReference fridgeEntryQuery = db.collection(FridgeEntry.COLLECTION).document(fridgeEntryId);
+//
+//        db.runTransaction((Transaction.Function<Void>) transaction -> {
+//            FridgeEntry fridgeEntry = parser.parseSnapshot(transaction.get(fridgeEntryQuery));
+//            int amount = fridgeEntry.getAmount();
+//            Log.v("hansi", String.valueOf(amount));
+//            transaction.update(fridgeEntryQuery, FridgeEntry.FIELD_AMOUNT, amount + 1);
+//            return null;
+//        });
+//        return null;
+//    }
+
+    public Task<FridgeEntry> changeAmountFridgeItem(String userId, String itemId) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String fridgeEntryId = FridgeEntry.generateId(userId, itemId);
         final DocumentReference fridgeEntryQuery = db.collection(FridgeEntry.COLLECTION).document(fridgeEntryId);
 
-        db.runTransaction((Transaction.Function<Void>) transaction -> {
+        return db.runTransaction((Transaction.Function<FridgeEntry>) transaction -> {
             FridgeEntry fridgeEntry = parser.parseSnapshot(transaction.get(fridgeEntryQuery));
             int amount = fridgeEntry.getAmount();
+            fridgeEntry.setAmount(amount + 1);
             Log.v("hansi", String.valueOf(amount));
             transaction.update(fridgeEntryQuery, FridgeEntry.FIELD_AMOUNT, amount + 1);
-            return null;
+            return fridgeEntry;
         });
-        return null;
+//        return null;
     }
 
 
