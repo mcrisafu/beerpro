@@ -33,16 +33,13 @@ public class FridgeRepository {
     private final static EntityClassSnapshotParser<FridgeEntry> parser = new EntityClassSnapshotParser<>(FridgeEntry.class);
 
     private static LiveData<List<FridgeEntry>> getFridgeEntryByUser(String userId) {
-        return new FirestoreQueryLiveDataArray<>(FirebaseFirestore.getInstance().collection(FridgeEntry.COLLECTION)
-                .orderBy(FridgeEntry.FIELD_ADDED_AT, Query.Direction.DESCENDING).whereEqualTo(FridgeEntry.FIELD_USER_ID, userId),
-                FridgeEntry.class);
+        return new FirestoreQueryLiveDataArray<>(FirebaseFirestore.getInstance().collection(FridgeEntry.COLLECTION).orderBy(FridgeEntry.FIELD_ADDED_AT, Query.Direction.DESCENDING).whereEqualTo(FridgeEntry.FIELD_USER_ID, userId), FridgeEntry.class);
     }
 
     private static LiveData<FridgeEntry> getUserFridgeFor(Pair<String, Beer> input) {
         String userId = input.first;
         Beer beer = input.second;
-        DocumentReference document = FirebaseFirestore.getInstance().collection(FridgeEntry.COLLECTION)
-                .document(FridgeEntry.generateId(userId, beer.getId()));
+        DocumentReference document = FirebaseFirestore.getInstance().collection(FridgeEntry.COLLECTION).document(FridgeEntry.generateId(userId, beer.getId()));
         return new FirestoreQueryLiveData<>(document, FridgeEntry.class);
     }
 
@@ -58,7 +55,7 @@ public class FridgeRepository {
             if (task.isSuccessful() && task.getResult().exists()) {
                 return fridgeEntryQuery.delete();
             } else if (task.isSuccessful()) {
-                return fridgeEntryQuery.set(new FridgeEntry(userId, itemId, new Date()));
+                return fridgeEntryQuery.set(new FridgeEntry(userId, itemId, new Date(), 1));
             } else {
                 throw task.getException();
             }
