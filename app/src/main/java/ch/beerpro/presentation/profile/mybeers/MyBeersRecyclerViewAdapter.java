@@ -103,6 +103,21 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
 //        @BindView(R.id.amountInFridge)
 //        TextView amountInFridge;
 
+        @BindView(R.id.amountInFridge)
+        TextView amountInFridge;
+
+        @BindView(R.id.increaseFridgePlusOne)
+        Button increaseFridgePlusOne;
+
+        @BindView(R.id.decreaseFridgeMinusOne)
+        Button decreaseFridgeMinusOne;
+
+        @BindView(R.id.increaseFridgePlusSix)
+        Button increaseFridgePlusSix;
+
+        @BindView(R.id.decreaseFridgeMinusSix)
+        Button decreaseFridgeMinusSix;
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, itemView);
@@ -142,11 +157,6 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
                 onTheListSince.setText("beurteilt am");
             }
 
-//            if (entry instanceof MyBeerFromFridge){
-//                FridgeEntry fridgeEntry =((MyBeerFromFridge) entry).getFridgeEntry();
-//                System.out.println(fridgeEntry.getAmount());
-//                amountInFridge.setText("hans");
-//            }
         }
     }
 }

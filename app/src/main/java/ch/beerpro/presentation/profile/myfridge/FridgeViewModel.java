@@ -46,10 +46,5 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
         return fridgeRepository.changeAmountFridgeItem(getCurrentUser().getUid(), itemId, byAmount);
     }
 
-//    public LiveData<FridgeEntry> getMyFridgeEntryforBeer(String itemId){
-//        LiveData<String> beerId = new MutableLiveData<>(itemId);
-//        LiveData<Beer> beer = beersRepository.getBeer(beerId);
-//        return fridgeRepository.getMyFridgeEntryForBeer(currentUserId, beer);
-//    }
 
 }

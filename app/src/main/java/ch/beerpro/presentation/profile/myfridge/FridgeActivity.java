@@ -103,8 +103,4 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
         model.increaseItemAmountInFridge(beer.getId(), byAmount);
     }
 
-//    public void fridgeEntryAmountFetcher(Beer beer){
-//        //Log.v("asdf", model.getMyFridgeEntryforBeer(beer.getId());
-//        model.getMyFridgeEntryforBeer(beer.getId());
-//    }
 }

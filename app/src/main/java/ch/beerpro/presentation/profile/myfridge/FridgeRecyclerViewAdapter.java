@@ -96,6 +96,8 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
         @BindView(R.id.decreaseFridgeMinusSix)
         Button decreaseFridgeMinusSix;
 
+        @BindView(R.id.inFridgeName)
+        TextView inFridgeName;
 
         ViewHolder(View view) {
             super(view);
@@ -121,7 +123,12 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeEntry, Bee
             remove.setOnClickListener(v -> listener.onFridgeEntryClickedListener(item));
             Log.v(TAG, String.valueOf(fridgeEntry.getAmount()));
             Log.v(TAG, fridgeEntry.toString());
+            inFridgeName.setVisibility(View.VISIBLE);
             amountInFridge.setText(String.valueOf(fridgeEntry.getAmount()));
+            increaseFridgePlusSix.setVisibility(View.VISIBLE);
+            increaseFridgePlusOne.setVisibility(View.VISIBLE);
+            decreaseFridgeMinusOne.setVisibility(View.VISIBLE);
+            decreaseFridgeMinusSix.setVisibility(View.VISIBLE);
             increaseFridgePlusOne.setOnClickListener(v -> listener.onChangeItemByAmountClickedListener(item, 1));
             decreaseFridgeMinusOne.setOnClickListener(v -> listener.onChangeItemByAmountClickedListener(item, -1));
             increaseFridgePlusSix.setOnClickListener(v -> listener.onChangeItemByAmountClickedListener(item, 6));
