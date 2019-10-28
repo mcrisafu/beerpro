@@ -62,7 +62,7 @@ public class FridgeRepository {
         });
     }
 
-    public Task<Void> changeAmountFridgeItem(String userId, String itemId) {
+    public Task<Void> changeAmountFridgeItem(String userId, String itemId, int changeAmount) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String fridgeEntryId = FridgeEntry.generateId(userId, itemId);
@@ -71,8 +71,7 @@ public class FridgeRepository {
         db.runTransaction((Transaction.Function<Void>) transaction -> {
             FridgeEntry fridgeEntry = parser.parseSnapshot(transaction.get(fridgeEntryQuery));
             int amount = fridgeEntry.getAmount();
-            Log.v("hansi", String.valueOf(amount));
-            transaction.update(fridgeEntryQuery, FridgeEntry.FIELD_AMOUNT, amount + 1);
+            transaction.update(fridgeEntryQuery, FridgeEntry.FIELD_AMOUNT, amount + changeAmount);
             return null;
         });
         return null;

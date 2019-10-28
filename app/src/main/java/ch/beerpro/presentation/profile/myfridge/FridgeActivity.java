@@ -99,11 +99,8 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
     }
 
     @Override
-    public void onIncreaseFridgePlusOneClickedListener(Beer beer){
-//        fridgeEntry.increaseAmount(1);
-//        Log.v("hans", String.valueOf(fridgeEntry.getAmount()));
-//        Log.v("hans", String.valueOf(fridgeEntry.getUserId()));
-        model.increaseItemAmountInFridge(beer.getId());
+    public void onChangeItemByAmountClickedListener(Beer beer, int byAmount){
+        model.increaseItemAmountInFridge(beer.getId(), byAmount);
     }
 
 //    public void fridgeEntryAmountFetcher(Beer beer){

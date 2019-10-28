@@ -5,6 +5,16 @@
     tools:showIn="@layout/fragment_searchresult_listentry"
     android:layout_height="wrap_content">
 
+    <Button
+        android:id="@+id/decreaseFridgeMinusSix"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:text="-6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/photo"
         android:layout_width="80dp"
@@ -80,11 +90,8 @@
         android:id="@+id/amountInFridge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Amount" />
@@ -93,22 +100,42 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="216dp"
         android:text="im Kühlschrank"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/increaseFridgePlusOne"
         android:layout_width="49dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="+1"
+        app:layout_constraintEnd_toStartOf="@+id/increaseFridgePlusSix"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/increaseFridgePlusSix"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="+6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/decreaseFridgeMinusOne"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:text="-1"
+        app:layout_constraintEnd_toStartOf="@+id/decreaseFridgeMinusSix"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

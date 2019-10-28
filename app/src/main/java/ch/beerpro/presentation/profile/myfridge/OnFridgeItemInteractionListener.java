@@ -11,5 +11,5 @@ public interface OnFridgeItemInteractionListener {
 
     void onFridgeEntryClickedListener(Beer beer);
 
-    void onIncreaseFridgePlusOneClickedListener(Beer beer);
+    void onChangeItemByAmountClickedListener(Beer beer, int amount);
 }
