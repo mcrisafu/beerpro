@@ -21,7 +21,9 @@
             android:drawableTint="@android:color/darker_gray"
             android:text="Ort Hinzufügen"
             android:textColor="@android:color/darker_gray"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:onClick="startPlacePicking"
+            />
 
         <View
             android:layout_width="1dp"

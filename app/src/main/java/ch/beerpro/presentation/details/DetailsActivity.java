@@ -34,6 +34,8 @@ import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
+import ch.beerpro.presentation.ratings.MapsActivity;
+import ch.beerpro.presentation.ratings.MapsActivityV2;
 
 import static ch.beerpro.presentation.utils.DrawableHelpers.setDrawableTint;
 
@@ -183,5 +185,10 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void startPlacePicking(View v){
+        Intent intent = new Intent(this, MapsActivityV2.class);
+        startActivity(intent);
     }
 }
