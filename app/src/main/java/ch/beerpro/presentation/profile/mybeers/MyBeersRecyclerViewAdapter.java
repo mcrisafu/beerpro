@@ -106,6 +106,9 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
         @BindView(R.id.amountInFridge)
         TextView amountInFridge;
 
+        @BindView(R.id.inFridgeName)
+        TextView inFridgeName;
+
         @BindView(R.id.increaseFridgePlusOne)
         Button increaseFridgePlusOne;
 
@@ -145,6 +148,11 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
             String formattedDate =
                     DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(entry.getDate());
             addedAt.setText(formattedDate);
+            inFridgeName.setVisibility(View.VISIBLE);
+            amountInFridge.setVisibility(View.VISIBLE);
+            if (entry instanceof MyBeerFromFridge){
+                amountInFridge.setVisibility(View.VISIBLE);
+            }
 
             if (entry instanceof MyBeerFromWishlist) {
                 DrawableHelpers
