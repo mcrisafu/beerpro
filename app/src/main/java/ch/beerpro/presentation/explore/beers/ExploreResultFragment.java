@@ -1,4 +1,4 @@
-package ch.beerpro.presentation.explore.search.beers;
+package ch.beerpro.presentation.explore.beers;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,9 +20,9 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.presentation.explore.search.SearchViewModel;
 
-public class SearchResultFragment extends Fragment {
+public class ExploreResultFragment extends Fragment {
 
-    private static final String TAG = "SearchResultFragment";
+    private static final String TAG = "ExploreResultFragment";
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -31,9 +31,9 @@ public class SearchResultFragment extends Fragment {
     View emptyView;
 
     private OnItemSelectedListener mListener;
-    private SearchResultRecyclerViewAdapter adapter;
+    private ExploreResultRecyclerViewAdapter adapter;
 
-    public SearchResultFragment() {
+    public ExploreResultFragment() {
     }
 
     private void handleBeersChanged(List<Beer> beers) {
@@ -65,7 +65,7 @@ public class SearchResultFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new SearchResultRecyclerViewAdapter(mListener);
+        adapter = new ExploreResultRecyclerViewAdapter(mListener);
 
         SearchViewModel model = ViewModelProviders.of(getActivity()).get(SearchViewModel.class);
         model.getFilteredBeers().observe(getActivity(), this::handleBeersChanged);

@@ -27,6 +27,7 @@ public class SearchViewModel extends ViewModel implements CurrentUser {
 
     private static final String TAG = "SearchViewModel";
     private final MutableLiveData<String> searchTerm = new MutableLiveData<>();
+    private final MutableLiveData<String> filterContext = new MutableLiveData<>();
     private final MutableLiveData<String> currentUserId = new MutableLiveData<>();
 
     private final LiveData<List<Beer>> filteredBeers;
@@ -59,13 +60,28 @@ public class SearchViewModel extends ViewModel implements CurrentUser {
             return Collections.emptyList();
         }
         ArrayList<Beer> filtered = new ArrayList<>();
+        ArrayList<Beer> filteredByCategory = new ArrayList<>();
+        ArrayList<Beer> filteredByBrewery = new ArrayList<>();
         for (Beer beer : allBeers) {
+            if (beer.getCategory().toLowerCase().equals(searchTerm1.toLowerCase())) {
+                filteredByCategory.add(beer);
+            }
+            if (beer.getManufacturer().toLowerCase().equals((searchTerm1.toLowerCase()))) {
+                filteredByBrewery.add(beer);
+            }
             if (beer.getName().toLowerCase().contains(searchTerm1.toLowerCase())) {
                 filtered.add(beer);
             }
         }
+        if (filteredByCategory.size() > 0) {
+            return filteredByCategory;
+        }
+        if (filteredByBrewery.size() > 0) {
+            return filteredByBrewery;
+        }
         return filtered;
     }
+
 
     public LiveData<List<Search>> getMyLatestSearches() {
         return myLatestSearches;
@@ -74,6 +90,7 @@ public class SearchViewModel extends ViewModel implements CurrentUser {
     public void setSearchTerm(String searchTerm) {
         this.searchTerm.setValue(searchTerm);
     }
+    public void setFilterContext(String filterContext) { this.filterContext.setValue(filterContext);}
 
     public LiveData<List<Beer>> getFilteredBeers() {
         return filteredBeers;
