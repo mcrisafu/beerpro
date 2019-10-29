@@ -175,6 +175,20 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         }
     }
 
+    @OnClick(R.id.button2)
+    public void onSharingClickListener(View view) {
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        model.getBeer().toString();
+        intent.putExtra(Intent.EXTRA_TEXT, model.getBeer().getValue().toString());
+
+        try {
+          startActivity(Intent.createChooser(intent, "Select an action"));
+        } catch (android.content.ActivityNotFoundException ex) {
+          // (handle error)
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
