@@ -37,6 +37,7 @@
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme" />
         <activity android:name=".presentation.explore.search.SearchActivity" />
+        <activity android:name=".presentation.explore.filter.FilterActivity" />
         <activity
             android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_single_beer"
@@ -60,6 +61,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".presentation.profile.mywishlist.WishlistActivity"
+            android:label="@string/title_activity_wishlist"
+            android:parentActivityName=".presentation.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+        </activity>
+        <activity
+            android:name=".presentation.profile.myfridge.FridgeActivity"
             android:label="@string/title_activity_wishlist"
             android:parentActivityName=".presentation.MainActivity"
             android:theme="@style/AppTheme">
