@@ -98,20 +98,8 @@
 
         </activity>
 
-        <activity android:name=".presentation.ratings.MapsActivityV2"
-            android:label="Meine Orte V2"
-            android:parentActivityName=".presentation.details.DetailsActivity"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
-        </activity>
-
-
-
-          <meta-data
+        <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/goole_maps_key"/>
 
