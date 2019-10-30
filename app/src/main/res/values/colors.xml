@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Light theme (default) -->
     <color name="colorPrimary">#fdd835</color>
     <color name="colorPrimaryLight">#ffff6b</color>
     <color name="colorPrimaryDark">#c6a700</color>
     <color name="windowBackgroundColor">#fffde7</color>
     <color name="colorAccent">#5d4037</color>
+
+    <!-- Dark theme -->
+    <color name="colorNightPrimary"></color>
+    <color name="colorNightPrimaryLight">#6b6415</color>
+    <color name="colorNightPrimaryDark">#615600</color>
+    <color name="windowBackgroundNightColor">#59584d</color>
+    <color name="colorNightAccent">#ffea00</color>
+
 </resources>

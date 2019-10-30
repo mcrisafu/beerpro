@@ -14,6 +14,22 @@
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
     </style>
 
+    <!-- Same thing for dark theme -->
+    <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorNightPrimary</item>
+        <item name="colorPrimaryDark">@color/colorNightPrimaryLight</item>
+        <item name="colorAccent">@color/colorNightAccent</item>
+        <item name="android:windowBackground">@color/windowBackgroundNightColor</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/change_view_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
+    </style>
+
+
 
     <style name="DetailsPageTheme" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

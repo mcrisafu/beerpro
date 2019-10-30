@@ -76,6 +76,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />
         </activity>
+        <activity
+            android:name=".presentation.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".presentation.MainActivity"
+            android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".presentation.SettingsActivity" />
+    </activity>
+
     </application>
 
 </manifest>
