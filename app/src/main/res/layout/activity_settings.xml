@@ -4,6 +4,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ToolBarStyle"/>
+
     <Switch
         android:id="@+id/theme_switch"
         android:layout_width="match_parent"
@@ -12,7 +19,6 @@
         android:checked="false"
         android:layout_marginRight="@dimen/default_margin"
         android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
 
         android:text="ThemaText"
         android:textSize="@dimen/text_size"

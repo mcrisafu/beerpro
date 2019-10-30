@@ -14,7 +14,63 @@
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
     </style>
 
-    <!-- Same thing for dark theme -->
+    <style name="DetailsPageTheme" parent="AppTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
+    </style>
+
+    <style name="LoginScreenTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorAccent</item>
+        <item name="titleMarginStart">@dimen/title_margin_start</item>
+    </style>
+
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabMaxWidth">256dp</item>
+        <item name="tabIndicatorGravity">bottom</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabPaddingStart">6dp</item>
+        <item name="tabPaddingEnd">6dp</item>
+        <!--<item name="android:layout_marginLeft">64dp</item>
+        <item name="android:layout_marginRight">64dp</item>-->
+    </style>
+
+    <style name="FirebaseUI.AuthMethodPicker.Logo">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">160dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <dimen name="title_margin_start">24dp</dimen>
+
+    <!--
+    Same thing for dark theme
+    -->
+
     <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorNightPrimary</item>
         <item name="colorPrimaryDark">@color/colorNightPrimaryLight</item>
@@ -29,9 +85,7 @@
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
     </style>
 
-
-
-    <style name="DetailsPageTheme" parent="AppTheme">
+    <style name="DarkDetailsPageTheme" parent="DarkAppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">false</item>
@@ -39,22 +93,29 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
+    <style name="DarkCollapsingToolbarLayoutExpandedTextStyle" parent="DarkAppTheme">
         <item name="android:textColor">@android:color/transparent</item>
         <item name="android:textSize">0sp</item>
     </style>
 
-    <style name="ToolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+
+    <style name="DarkToolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/colorAccent</item>
         <item name="actionMenuTextColor">@color/colorAccent</item>
         <item name="titleMarginStart">@dimen/title_margin_start</item>
     </style>
 
-    <style name="LoginScreenTheme" parent="AppTheme">
-        <item name="android:windowBackground">@color/colorPrimary</item>
+    <style name="DarkLoginScreenTheme" parent="DarkAppTheme">
+        <item name="android:windowBackground">@color/colorNightPrimaryDark</item>
     </style>
 
+    <style name="DarkAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="DarkAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- PROBABLY NOT NEEDED
     <style name="FirebaseUI.AuthMethodPicker.Logo">
         <item name="android:layout_width">160dp</item>
         <item name="android:layout_height">160dp</item>
@@ -62,16 +123,12 @@
         <item name="android:padding">0dp</item>
     </style>
 
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@android:color/darker_gray</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <dimen name="title_margin_start">24dp</dimen>
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">?attr/colorAccent</item>
@@ -80,7 +137,9 @@
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabPaddingStart">6dp</item>
         <item name="tabPaddingEnd">6dp</item>
-        <!--<item name="android:layout_marginLeft">64dp</item>
-        <item name="android:layout_marginRight">64dp</item>-->
+        <! - - <item name="android:layout_marginLeft">64dp</item>
+        <item name="android:layout_marginRight">64dp</item> - - >
+
     </style>
+ -->
 </resources>

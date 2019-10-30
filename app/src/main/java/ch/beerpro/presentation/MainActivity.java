@@ -27,6 +27,7 @@ import ch.beerpro.presentation.explore.ExploreFragment;
 import ch.beerpro.presentation.profile.ProfileFragment;
 import ch.beerpro.presentation.ratings.RatingsFragment;
 import ch.beerpro.presentation.splash.SplashScreenActivity;
+import ch.beerpro.presentation.utils.NightModePref;
 import ch.beerpro.presentation.utils.ViewPagerAdapter;
 
 /**
@@ -48,8 +49,19 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
 
+    NightModePref nightmodePref;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "On Resume: UPDATE DARK THEME HERE", Toast.LENGTH_LONG).show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+//        setTheme(R.style.DarkAppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
