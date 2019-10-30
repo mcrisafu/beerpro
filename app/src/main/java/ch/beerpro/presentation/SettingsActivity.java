@@ -25,19 +25,20 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         nightmodePref = new NightModePref(this);
-        if(nightmodePref.loadNightModeState()){
-            setTheme(R.style.DarkAppTheme);
-        } else{
-            setTheme(R.style.AppTheme);
-        }
+        nightmodePref.loadNightOrDayMode(this);
+//        nightmodePref.loadNightOrDayMode(this, toolbar);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
 
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Einstellungen");
+
+
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorNightAccent));
 
         themeSwitch = (Switch) findViewById(R.id.theme_switch);
 
@@ -64,7 +65,6 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
                 this.finish();
                 return true;
             default:
@@ -82,6 +82,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void restartApp(){
         Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(i);
-        finish();
+        this.finish();
     }
 }

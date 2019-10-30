@@ -55,12 +55,15 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "On Resume: UPDATE DARK THEME HERE", Toast.LENGTH_LONG).show();
+
+   //     nightmodePref.loadNightOrDayMode(this);
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-//        setTheme(R.style.DarkAppTheme);
+        nightmodePref = new NightModePref(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -143,8 +146,8 @@ public class MainActivity extends AppCompatActivity
     private void logout() {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> {
             Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
-            startActivity(intent);
             finish();
+            startActivity(intent);
         });
     }
 

@@ -100,19 +100,15 @@
 
 
     <style name="DarkToolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:textColorSecondary">@color/colorAccent</item>
-        <item name="actionMenuTextColor">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorNightAccent</item>
+        <item name="android:textColorSecondary">@color/colorNightAccent</item>
+        <item name="actionMenuTextColor">@color/colorNightAccent</item>
         <item name="titleMarginStart">@dimen/title_margin_start</item>
     </style>
 
     <style name="DarkLoginScreenTheme" parent="DarkAppTheme">
         <item name="android:windowBackground">@color/colorNightPrimaryDark</item>
     </style>
-
-    <style name="DarkAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="DarkAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
     <!-- PROBABLY NOT NEEDED

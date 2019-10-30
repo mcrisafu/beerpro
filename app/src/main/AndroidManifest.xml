@@ -81,6 +81,9 @@
             android:label="Settings"
             android:parentActivityName=".presentation.MainActivity"
             android:theme="@style/AppTheme">
+            <!-- android:noHistory="true" -->
+
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".presentation.SettingsActivity" />
