@@ -104,4 +104,14 @@
     <string name="title_activity_myratings">Meine Bewertungen</string>
     <string name="title_activity_mybeers">Meine Biere</string>
     <string name="action_search">Bier suchen</string>
+
+    <string name="title_activity_maps">Meine Orte</string>
+    <string name="action_geolocate">Ort Hinzufügen</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">Keine Orte gefunden. Überprüfe die Berechtigung zur Standortfreigabe.</string>
+
+    <!--    The following resource is for the Google Place Picker API.
+        Credential belongs to shaban.rexhepi@hsr.ch
+        -->
+    <string name="goole_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDxo0VewsELHDEZ0x7Wl4AuZz8v9N9BfYM</string>
 </resources>
