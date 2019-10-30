@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new ExploreFragment());
         adapter.addFragment(new RatingsFragment());
         adapter.addFragment(new ProfileFragment());
-        adapter.addFragment(new BeerCategoriesFragment());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_search_black_24dp);
